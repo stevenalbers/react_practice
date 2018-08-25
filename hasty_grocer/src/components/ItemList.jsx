@@ -10,12 +10,16 @@ class ItemList extends Component {
 			let items = [];
 			snap.forEach(item => {
 				const { email, itemName } = item.val();
-				//const serverKey = item.key;
-				items.push({ email, itemName });
+				const serverKey = item.key;
+				items.push({ email, itemName, serverKey });
 			})
 			console.log('items',items);
 			this.props.setItems(items);
 		})
+	}
+
+	removeAllItems() {
+		itemRef.set([]);
 	}
 
 	render() {
@@ -31,6 +35,11 @@ class ItemList extends Component {
 					)
 				})
 			}
+			<br />
+			<button
+				className="btn btn-danger"
+				onClick={() => this.removeAllItems()}
+			>Clear List</button>
 			</div>
 		)
 	}

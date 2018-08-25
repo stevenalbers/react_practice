@@ -12,9 +12,12 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Items</h3>
+				<h3>Hasty Grocer</h3>
 				<AddItem />
+				<br />
+				<h4>Grocery List</h4>
 				<ItemList />
+				<br />
 				<button 
 				className="btn btn-danger" 
 				onClick={() => this.signOut()}>
