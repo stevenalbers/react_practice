@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { itemRef } from '../firebase';
 import { setItems } from '../actions';
 import { connect } from 'react-redux';
+import Item from './Item';
 
 class ItemList extends Component {
 	componentDidMount() {
@@ -9,6 +10,7 @@ class ItemList extends Component {
 			let items = [];
 			snap.forEach(item => {
 				const { email, itemName } = item.val();
+				//const serverKey = item.key;
 				items.push({ email, itemName });
 			})
 			console.log('items',items);
@@ -22,9 +24,10 @@ class ItemList extends Component {
 		return (
 			<div>
 			{
-				this.props.items.map(item => {
+				this.props.items.map((item, index) => {
 					return (
-						<div>{item.itemName}</div>
+						//<div>{item.itemName}</div>
+						<Item key={index} item={item} />
 					)
 				})
 			}
